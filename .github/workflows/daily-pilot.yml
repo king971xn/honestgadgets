@@ -1,0 +1,50 @@
+name: Daily Review Generation
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install python-dotenv
+
+      - name: Run AutoPilot (Full Mode)
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
+          DEEPSEEK_MODEL_ID: ${{ secrets.DEEPSEEK_MODEL_ID }}
+          AFFILIATE_TAG: ${{ secrets.AFFILIATE_TAG }}
+          PUSH_DEER_KEY: ${{ secrets.PUSH_DEER_KEY }}
+          SERVER_CHAN_KEY: ${{ secrets.SERVER_CHAN_KEY }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: python auto_pilot.py
+
+      - name: Commit and push to GitHub
+        run: |
+          git config user.name "AutoPilot Bot"
+          git config user.email "bot@honestgadgets.com"
+          git add reviews/ compare/ index.html compare.html sitemap.xml rss.xml auto_pilot.log health_report.md indexnow-key.txt
+          git diff --staged --quiet || (git commit -m "Auto: daily generation [skip ci]" && git push origin main)
+
+      - name: Push to Gitee (mirror)
+        if: success()
+        run: |
+          if git remote get-url gitee > /dev/null 2>&1; then
+            git push gitee main
+          else
+            echo "Gitee remote not configured, skipping."
+          fi

@@ -1,0 +1,42 @@
+2026-06-11 15:40:44,834 [INFO] ==================================================
+2026-06-11 15:40:44,834 [INFO] AutoSourcer — 自动选品脚本启动
+2026-06-11 15:40:44,835 [INFO] 已加载 10 个品类
+2026-06-11 15:40:44,835 [INFO] 
+Mechanical Keyboards: 1 → 目标 8，需要 +7
+2026-06-11 15:41:56,565 [INFO]   → 未发现新产品
+2026-06-11 15:41:58,566 [INFO] 
+Standing Desks: 1 → 目标 8，需要 +7
+2026-06-11 15:43:06,862 [INFO]   → 未发现新产品
+2026-06-11 15:43:08,863 [INFO] 
+Robot Vacuums: 1 → 目标 8，需要 +7
+2026-06-11 15:44:05,844 [ERROR] JSON 解析失败: Unterminated string starting at: line 181 column 14 (char 6315)
+2026-06-11 15:44:05,844 [INFO]   → 未发现新产品
+2026-06-11 15:44:07,845 [INFO] 
+Mini Projectors: 1 → 目标 8，需要 +7
+2026-06-11 15:45:20,388 [ERROR] JSON 解析失败: Unterminated string starting at: line 23 column 5 (char 839)
+2026-06-11 15:45:20,388 [INFO]   → 未发现新产品
+2026-06-11 15:45:22,389 [INFO] 
+Security Cameras: 1 → 目标 8，需要 +7
+2026-06-11 15:46:40,074 [INFO]   → 未发现新产品
+2026-06-11 15:46:42,075 [INFO] 
+Noise-Canceling Headphones: 0 → 目标 8，需要 +8
+2026-06-11 15:47:51,705 [ERROR] JSON 解析失败: Expecting ',' delimiter: line 1 column 369 (char 368)
+2026-06-11 15:47:51,705 [INFO]   → 未发现新产品
+2026-06-11 15:47:53,705 [INFO] 
+Webcams: 0 → 目标 8，需要 +8
+2026-06-11 15:48:58,885 [ERROR] JSON 解析失败: Unterminated string starting at: line 24 column 31 (char 782)
+2026-06-11 15:48:58,885 [INFO]   → 未发现新产品
+2026-06-11 15:49:00,886 [INFO] 
+Portable Power Stations: 0 → 目标 8，需要 +8
+2026-06-11 15:50:05,582 [INFO]   → 未发现新产品
+2026-06-11 15:50:07,583 [INFO] 
+Electric Scooters: 0 → 目标 8，需要 +8
+2026-06-11 15:51:12,503 [ERROR] JSON 解析失败: Unterminated string starting at: line 90 column 7 (char 2915)
+2026-06-11 15:51:12,503 [INFO]   → 未发现新产品
+2026-06-11 15:51:14,505 [INFO] 
+Air Purifiers: 0 → 目标 8，需要 +8
+2026-06-11 15:52:19,913 [ERROR] JSON 解析失败: Unterminated string starting at: line 64 column 14 (char 2270)
+2026-06-11 15:52:19,913 [INFO]   → 未发现新产品
+2026-06-11 15:52:21,914 [INFO] 
+未新增任何产品 (所有品类已达上限或发现失败)
+2026-06-11 15:52:21,914 [INFO] 下次建议运行: python auto_pilot.py

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yourusername.github.io/honestgadgets/sitemap.xml
+
+# Disallow temp files
+Disallow: /auto_pilot.log
+Disallow: /health_report.md
+Disallow: /.github/
+Disallow: /.env

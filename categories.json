@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Mechanical Keyboards",
+    "slug": "mechanical-keyboards",
+    "keywords": "mechanical keyboard, wireless keyboard, gaming keyboard, hot-swappable keyboard, programming keyboard",
+    "amazon_node": "12879431"
+  },
+  {
+    "name": "Standing Desks",
+    "slug": "standing-desks",
+    "keywords": "standing desk, height adjustable desk, electric standing desk, ergonomic desk, sit stand desk",
+    "amazon_node": "490624011"
+  },
+  {
+    "name": "Robot Vacuums",
+    "slug": "robot-vacuums",
+    "keywords": "robot vacuum, smart vacuum, self-emptying vacuum, robot mop, pet hair vacuum",
+    "amazon_node": "510202"
+  },
+  {
+    "name": "Mini Projectors",
+    "slug": "mini-projectors",
+    "keywords": "mini projector, portable projector, outdoor projector, 4K projector, home theater projector",
+    "amazon_node": "300334"
+  },
+  {
+    "name": "Security Cameras",
+    "slug": "security-cameras",
+    "keywords": "security camera, outdoor camera, PoE camera, wireless camera, home security",
+    "amazon_node": "898406"
+  },
+  {
+    "name": "Noise-Canceling Headphones",
+    "slug": "noise-canceling-headphones",
+    "keywords": "noise canceling headphones, ANC headphones, wireless headphones, over-ear headphones, Bluetooth headphones",
+    "amazon_node": "12097479011"
+  },
+  {
+    "name": "Webcams",
+    "slug": "webcams",
+    "keywords": "webcam, streaming camera, 4K webcam, conference camera, USB camera",
+    "amazon_node": "3015437011"
+  },
+  {
+    "name": "Portable Power Stations",
+    "slug": "portable-power-stations",
+    "keywords": "portable power station, solar generator, camping battery, emergency power, LiFePO4 battery",
+    "amazon_node": "13638782011"
+  },
+  {
+    "name": "Electric Scooters",
+    "slug": "electric-scooters",
+    "keywords": "electric scooter, commuter scooter, adult scooter, folding scooter, e-scooter",
+    "amazon_node": "9494109011"
+  },
+  {
+    "name": "Air Purifiers",
+    "slug": "air-purifiers",
+    "keywords": "air purifier, HEPA filter, air cleaner, allergy purifier, bedroom purifier",
+    "amazon_node": "510184"
+  }
+]

@@ -1,0 +1,537 @@
+[
+  {
+    "name": "Mini Projector",
+    "model": "Wimius K9 4K Projector",
+    "slug": "wimius-k9-4k-projector-review",
+    "amazon_url": "https://www.amazon.com/dp/B0DJR5MLSL",
+    "image_url": "https://m.media-amazon.com/images/I/71zYxXXXXXL._AC_SL1500_.jpg",
+    "price": "$199.99",
+    "specs": {
+      "Resolution": "Native 1080P, Supports 4K",
+      "Brightness": "9500 Lumens",
+      "Connectivity": "WiFi 6, Bluetooth 5.0, HDMI, USB",
+      "Screen Size": "50-300 inches",
+      "Speaker": "Built-in 5W Dual Stereo",
+      "Weight": "2.3 kg"
+    },
+    "tags": [
+      "mini projector",
+      "outdoor projector",
+      "home theater",
+      "budget 4K projector"
+    ],
+    "reviews": {
+      "positive": [
+        "I bought this for backyard movie nights and it's been awesome. The 4K support really makes a difference when streaming Netflix — way sharper than my old $80 projector. Setup took literally 5 minutes.",
+        "The WiFi 6 connectivity is a game changer. I can cast from my phone without any lag. My kids use it every weekend for cartoon marathons and the colors pop beautifully even with some ambient light.",
+        "Sound quality surprised me. The built-in speakers are loud enough for a small room. I used to carry a Bluetooth speaker but now I don't bother. Keystone correction works great too.",
+        "Had this for 6 months now, used almost daily. Zero issues. The fan noise is quieter than expected — you barely notice it once the movie starts. Compared to the Vankyo V630 I had before, this is a massive upgrade."
+      ],
+      "negative": [
+        "The '9500 lumens' claim is pure marketing BS. In a room with any daylight, the image is pretty washed out. This is strictly a dark-room projector, so don't expect to use it during the day.",
+        "After 3 months, the HDMI port started getting loose. Now I have to wiggle the cable to get a signal. Pretty annoying for a $200 device — quality control seems hit or miss.",
+        "The Netflix app keeps crashing and the remote is laggy. I ended up just plugging in a Fire Stick. Also the fan gets noticeably louder after about 2 hours of use, like it's struggling to cool down.",
+        "Customer service is non-existent. I emailed them about a dead pixel and never heard back. The manual is poorly translated and the menu UI feels like it's from 2010. You get what you pay for I guess."
+      ]
+    },
+    "category": "mini-projectors",
+    "status": "active",
+    "added": "2025-06-01"
+  },
+  {
+    "name": "Standing Desk",
+    "model": "FlexiSpot E7 Pro Standing Desk",
+    "slug": "flexispot-e7-pro-standing-desk-review",
+    "amazon_url": "https://www.amazon.com/dp/B0C7RPBX4Q",
+    "image_url": "https://m.media-amazon.com/images/I/81aBxXXXXXL._AC_SL1500_.jpg",
+    "price": "$449.99",
+    "specs": {
+      "Height Range": "24.4\" - 50.0\"",
+      "Weight Capacity": "355 lbs",
+      "Desktop Size": "55\" x 28\"",
+      "Motor Type": "Dual Motor",
+      "Speed": "1.5\" per second",
+      "Noise Level": "< 45dB"
+    },
+    "tags": [
+      "standing desk",
+      "ergonomic desk",
+      "home office",
+      "height adjustable desk"
+    ],
+    "reviews": {
+      "positive": [
+        "As a software developer who sits 10+ hours a day, this desk literally saved my back. The dual motor is smooth and quiet enough that it doesn't wake my baby when I switch positions. The 355lb capacity means it handles my triple monitor setup with zero wobble.",
+        "Assembly took about 45 minutes solo. Instructions were crystal clear and all hardware was labeled. The bamboo top feels premium — way nicer than the IKEA Bekant I was using before. Height memory presets are super convenient.",
+        "I was worried about stability at max height (I'm 6'3\"), but this thing is rock solid. Even when I'm typing aggressively, my monitors don't shake. The anti-collision feature already saved my chair twice. Worth every penny for WFH setups."
+      ],
+      "negative": [
+        "The desk arrived with a small dent on the corner of the bamboo top. The packaging wasn't great — just styrofoam that got crushed during shipping. FlexiSpot offered a partial refund but I'd rather have a perfect desk at this price point.",
+        "After 8 months, the control panel started acting up — sometimes it just won't respond and I have to unplug the desk to reset it. Very frustrating when you're in the middle of a meeting and stuck standing.",
+        "The cable management tray is a joke. It's too small to fit a power strip and the included zip ties feel cheap. For $450, I expected better accessories. Also the desk has a slight chemical smell that took about 2 weeks to fully air out."
+      ]
+    },
+    "category": "standing-desks",
+    "status": "active",
+    "added": "2025-06-01"
+  },
+  {
+    "name": "Robot Vacuum",
+    "model": "Roborock Q8 Max+ Robot Vacuum",
+    "slug": "roborock-q8-max-plus-robot-vacuum-review",
+    "amazon_url": "https://www.amazon.com/dp/B0C4ZP2PL5",
+    "image_url": "https://m.media-amazon.com/images/I/71cZxXXXXXL._AC_SL1500_.jpg",
+    "price": "$599.99",
+    "specs": {
+      "Suction Power": "5500 Pa",
+      "Battery Life": "180 minutes",
+      "Dustbin Capacity": "470 ml",
+      "Navigation": "LiDAR + ReactiveAI",
+      "Self-Empty Dock": "Yes, 2.5L bag",
+      "App Control": "Roborock App + Alexa + Google Home"
+    },
+    "tags": [
+      "robot vacuum",
+      "smart vacuum",
+      "self-emptying vacuum",
+      "pet hair vacuum"
+    ],
+    "reviews": {
+      "positive": [
+        "I have two Golden Retrievers and this thing is a lifesaver. The 5500Pa suction picks up embedded dog hair from my carpet that my Dyson stick vacuum misses. The self-empty dock means I only touch the vacuum once a month. Game changer.",
+        "LiDAR mapping is incredibly accurate. It mapped my 2000 sq ft house in about 10 minutes and never gets lost. I can set no-go zones for my kid's play area and it respects them perfectly. The app is super intuitive.",
+        "Best purchase of 2024 hands down. Battery lasts long enough to clean my entire main floor on one charge. The ReactiveAI actually avoids dog poop (tested unfortunately) and cables. Night mode is whisper quiet."
+      ],
+      "negative": [
+        "The self-empty dock is LOUD. Like jet engine loud for about 10 seconds. If you have a sleeping baby or run it at night, it WILL wake people up. There's no way to schedule the emptying separately from cleaning.",
+        "After 4 months, the main brush stopped spinning. Turns out long hair wraps around the axle and eventually burns out the motor. You need to clean the brush bearings every 2 weeks or it dies — not exactly 'maintenance-free' as advertised.",
+        "The water tank for mopping is a joke — it barely dampens the floor. Don't buy this thinking it'll replace actual mopping. Also the dust bags are expensive ($25 for a 3-pack) and you go through them surprisingly fast with pets."
+      ]
+    },
+    "category": "robot-vacuums",
+    "status": "active",
+    "added": "2025-06-01"
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "model": "Keychron K8 Pro Wireless Mechanical Keyboard",
+    "slug": "keychron-k8-pro-wireless-mechanical-keyboard-review",
+    "amazon_url": "https://www.amazon.com/dp/B0B5RZQ4JY",
+    "image_url": "https://m.media-amazon.com/images/I/71dYxXXXXXL._AC_SL1500_.jpg",
+    "price": "$89.99",
+    "specs": {
+      "Layout": "TKL (87 Keys)",
+      "Switch Type": "Gateron G Pro Brown",
+      "Connectivity": "Bluetooth 5.1 + USB-C Wired",
+      "Battery": "4000 mAh",
+      "Backlight": "RGB (South-facing)",
+      "Compatibility": "Mac + Windows + Linux",
+      "Hot-Swappable": "Yes"
+    },
+    "tags": [
+      "mechanical keyboard",
+      "wireless keyboard",
+      "programming keyboard",
+      "hot-swappable keyboard"
+    ],
+    "reviews": {
+      "positive": [
+        "As a programmer, I type 12+ hours daily and this keyboard feels amazing. The Gateron Brown switches have that perfect tactile bump without being obnoxiously loud. Hot-swappable means I can try different switches without soldering. Huge plus.",
+        "The Mac/Windows switch on the side is brilliant — I use it with both operating systems and it works flawlessly. Bluetooth connects to 3 devices and switching is instant. The 4000mAh battery lasts me about 3 weeks with RGB off.",
+        "Build quality punches way above its $90 price tag. Aluminum frame, double-shot keycaps, and the stabilizers are pre-lubed so there's zero rattle. I've owned $200+ keyboards that don't feel this solid. The VIA/QMK support is the cherry on top."
+      ],
+      "negative": [
+        "Bluetooth connection drops randomly about once a day. Super frustrating when you're in the middle of typing code and suddenly nothing happens for 3-5 seconds. I ended up just using it wired, which defeats the purpose of buying a wireless keyboard.",
+        "The RGB is really dim — way dimmer than my previous Corsair. If you use it in a bright room, you can barely tell the backlight is on. Also the default keycaps get shiny and greasy after just a few weeks of use. Plan to buy aftermarket keycaps.",
+        "Keychron's customer support is terrible. My USB-C port got loose after 2 months and they wanted me to pay for return shipping. The firmware update process is also needlessly complicated — you need to download separate software just to remap keys."
+      ]
+    },
+    "category": "mechanical-keyboards",
+    "status": "active",
+    "added": "2025-06-01"
+  },
+  {
+    "name": "Security Camera",
+    "model": "Reolink Duo 3 PoE Dual-Lens Security Camera",
+    "slug": "reolink-duo-3-poe-security-camera-review",
+    "amazon_url": "https://www.amazon.com/dp/B0CLV4VZ3Q",
+    "image_url": "https://m.media-amazon.com/images/I/61eYxXXXXXL._AC_SL1500_.jpg",
+    "price": "$159.99",
+    "specs": {
+      "Resolution": "4K Dual-Lens (16MP total)",
+      "Field of View": "180° Panoramic",
+      "Night Vision": "IR + Color Night Vision",
+      "Power": "PoE (Power over Ethernet)",
+      "Storage": "MicroSD up to 256GB + NVR",
+      "Smart Detection": "Person / Vehicle / Pet AI",
+      "Weather Rating": "IP67"
+    },
+    "tags": [
+      "security camera",
+      "PoE camera",
+      "outdoor camera",
+      "180 degree camera",
+      "4K security camera"
+    ],
+    "reviews": {
+      "positive": [
+        "Installed two of these on my warehouse and the 180° field of view is no joke — one camera covers what used to take three. The dual-lens stitching is seamless and 4K resolution means I can actually read license plates 50 feet away. PoE means one cable for power AND data, no WiFi interference.",
+        "The AI person/vehicle detection is shockingly accurate. I've had zero false alerts from tree branches or stray cats unlike my old Ring cameras. It integrates perfectly with my Synology NAS via RTSP for 24/7 recording. Best $160 I've ever spent on security.",
+        "IP67 rating is legit — mine has survived a Florida hurricane season with zero issues. The color night vision with the built-in spotlight is impressive, looks almost like daytime footage. Reolink app is clean, no subscription fees unlike Ring/Arlo. This is the anti-subscription security camera."
+      ],
+      "negative": [
+        "Installation is a pain if you don't have existing Ethernet runs. I had to drill through brick and crawl through my attic for 3 hours. This thing is NOT for renters or casual users — you need to be comfortable running network cables.",
+        "The Reolink app occasionally takes 10+ seconds to load the live feed. On a gigabit fiber connection that's unacceptable. The desktop client is even worse — it looks like Windows XP software. They clearly spend all their budget on hardware and zero on software UX.",
+        "The MicroSD card slot is in a terrible position — you have to unscrew the entire camera from the mount to access it. Also the camera runs really hot in direct sunlight (like too hot to touch), which makes me worry about longevity in Arizona summers."
+      ]
+    },
+    "category": "security-cameras",
+    "status": "active",
+    "added": "2025-06-01"
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "model": "NuPhy Air75 V2 Wireless Mechanical Keyboard",
+    "slug": "nuphy-air75-v2-wireless-mechanical-keyboard-review",
+    "amazon_url": "https://www.amazon.com/dp/B0CJ5P8L9F",
+    "price": "$119.95",
+    "specs": {
+      "Layout": "75% (84 Keys)",
+      "Switch Type": "Gateron Low-Profile Brown",
+      "Connectivity": "Bluetooth 5.1 + 2.4GHz + USB-C Wired",
+      "Battery": "4000 mAh",
+      "Backlight": "RGB (South-facing)",
+      "Compatibility": "Mac + Windows + Linux",
+      "Hot-Swappable": "Yes"
+    },
+    "tags": [
+      "mechanical keyboard",
+      "low profile keyboard",
+      "wireless keyboard",
+      "75% keyboard",
+      "programming keyboard"
+    ],
+    "reviews": {
+      "positive": [
+        "The low-profile switches are a game-changer for long coding sessions. My wrists don't hurt anymore compared to my old Ducky. Battery lasts 2+ weeks with RGB on.",
+        "Best 75% layout I've used. The 2.4GHz dongle has zero latency for gaming, and Bluetooth switches between my work laptop and gaming PC instantly. Build quality is MacBook-level premium."
+      ],
+      "negative": [
+        "Keycaps are proprietary — you can't use standard MX keycaps because the stems are different. NuPhy sells replacements but they're expensive. Also the software is Windows-only, Mac users are stuck with default lighting."
+      ]
+    },
+    "category": "mechanical-keyboards",
+    "status": "active",
+    "added": "2025-11-15"
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "model": "Royal Kludge RK61 Wireless Mechanical Keyboard",
+    "slug": "royal-kludge-rk61-wireless-mechanical-keyboard-review",
+    "amazon_url": "https://www.amazon.com/dp/B0973JGRK2",
+    "price": "$49.99",
+    "specs": {
+      "Layout": "60% (61 Keys)",
+      "Switch Type": "RK Red Linear",
+      "Connectivity": "Bluetooth 5.0 + USB-C Wired",
+      "Battery": "1450 mAh",
+      "Backlight": "RGB",
+      "Compatibility": "Mac + Windows + Android + iOS",
+      "Hot-Swappable": "Yes"
+    },
+    "tags": [
+      "mechanical keyboard",
+      "budget keyboard",
+      "60% keyboard",
+      "hot-swappable keyboard",
+      "gaming keyboard"
+    ],
+    "reviews": {
+      "positive": [
+        "For $50, this keyboard is insane value. Hot-swappable at this price point is unheard of. I swapped in Akko Matcha Greens and it feels like a $150 board. The 60% form factor saves so much desk space.",
+        "Bluetooth connects to 3 devices and switching is smooth. I use it with my iPad, MacBook, and gaming PC without re-pairing. Battery lasts about a week with RGB on, 3 weeks with it off."
+      ],
+      "negative": [
+        "The software is absolutely terrible — looks like it was made in 2005 and half the settings don't save. Also the stabilizers rattle like crazy out of the box, you NEED to mod them. USB-C port is recessed so thick cables won't fit."
+      ]
+    },
+    "category": "mechanical-keyboards",
+    "status": "active",
+    "added": "2025-12-01"
+  },
+  {
+    "name": "Standing Desk",
+    "model": "Uplift V2 Standing Desk",
+    "slug": "uplift-v2-standing-desk-review",
+    "amazon_url": "https://www.amazon.com/dp/B08DH5MSBJ",
+    "price": "$599.00",
+    "specs": {
+      "Height Range": "25.5\" - 51.1\"",
+      "Weight Capacity": "355 lbs",
+      "Desktop Size": "60\" x 30\"",
+      "Motor Type": "Dual Motor",
+      "Speed": "1.5\" per second",
+      "Noise Level": "< 45dB"
+    },
+    "tags": [
+      "standing desk",
+      "ergonomic desk",
+      "home office desk",
+      "Uplift desk",
+      "premium standing desk"
+    ],
+    "reviews": {
+      "positive": [
+        "This is the gold standard of standing desks. The frame is built like a tank — zero wobble even at max height with 3 monitors. The bamboo top is gorgeous and the grommet holes are perfectly placed for cable management.",
+        "Customer service is phenomenal. They sent a replacement桌面 for a tiny scratch I didn't even complain about. The assembly instructions are color-coded and the hardware is organized in labeled bags. 10-year warranty is real peace of mind."
+      ],
+      "negative": [
+        "It's heavy — nearly 200 lbs in the box. You need two people to move it. Assembly took 2.5 hours solo. Also the control panel beeps every time you adjust height, which is annoying in a quiet office."
+      ]
+    },
+    "category": "standing-desks",
+    "status": "active",
+    "added": "2025-10-20"
+  },
+  {
+    "name": "Standing Desk",
+    "model": "FEZIBO Standing Desk",
+    "slug": "fezibo-standing-desk-review",
+    "amazon_url": "https://www.amazon.com/dp/B09MYQJ9PY",
+    "price": "$239.99",
+    "specs": {
+      "Height Range": "28.3\" - 46.4\"",
+      "Weight Capacity": "176 lbs",
+      "Desktop Size": "48\" x 24\"",
+      "Motor Type": "Single Motor",
+      "Speed": "1\" per second",
+      "Noise Level": "< 55dB"
+    },
+    "tags": [
+      "standing desk",
+      "budget standing desk",
+      "small standing desk",
+      "electric desk",
+      "home office"
+    ],
+    "reviews": {
+      "positive": [
+        "Perfect budget option for a small apartment. The 48\" top fits in my corner nook and the single motor is quieter than I expected. Assembly was 30 minutes flat — everything pre-drilled perfectly.",
+        "For $240, you're getting 80% of the FlexiSpot experience. The height memory has 3 presets and the anti-collision works. My back pain from sitting all day is gone after 2 weeks of alternating."
+      ],
+      "negative": [
+        "At max height there's noticeable side-to-side wobble when typing. Not deal-breaking but definitely there. The desktop surface scratches easily — use a desk mat. Weight capacity is only 176 lbs so heavy setups need to be careful."
+      ]
+    },
+    "category": "standing-desks",
+    "status": "active",
+    "added": "2025-11-28"
+  },
+  {
+    "name": "Robot Vacuum",
+    "model": "iRobot Roomba j7+ Robot Vacuum",
+    "slug": "irobot-roomba-j7-plus-robot-vacuum-review",
+    "amazon_url": "https://www.amazon.com/dp/B094NXRF5Z",
+    "price": "$499.99",
+    "specs": {
+      "Suction Power": "10x vs Roomba 600 series",
+      "Battery Life": "90 minutes",
+      "Dustbin Capacity": "400 ml",
+      "Navigation": "PrecisionVision + iAdapt 3.0",
+      "Self-Empty Dock": "Yes, Clean Base",
+      "Obstacle Avoidance": "P.O.O.P. (Pet Waste) Guarantee"
+    },
+    "tags": [
+      "robot vacuum",
+      "Roomba",
+      "pet vacuum",
+      "smart vacuum",
+      "self-emptying vacuum"
+    ],
+    "reviews": {
+      "positive": [
+        "The obstacle avoidance is witchcraft-level good. It identifies and avoids charging cables, pet toys, and — famously — pet accidents. My old Roomba would smear dog poop across the floor. This one actually stops and sends a photo.",
+        "The Clean Base is life-changing. 60 days between bag changes, and the mapping gets smarter every run. I name rooms in the app and tell it 'clean the kitchen after dinner' via Alexa. The future is here."
+      ],
+      "negative": [
+        "The replacement bags are absurdly expensive at $20 for a 3-pack. At this rate I'm spending $80/year just on bags. Also it doesn't have mopping at all — for $500 you'd expect at least basic mopping like the Roborock."
+      ]
+    },
+    "category": "robot-vacuums",
+    "status": "active",
+    "added": "2025-09-10"
+  },
+  {
+    "name": "Robot Vacuum",
+    "model": "Eufy RoboVac X8 Pro Robot Vacuum",
+    "slug": "eufy-robovac-x8-pro-robot-vacuum-review",
+    "amazon_url": "https://www.amazon.com/dp/B0B7RXCK7H",
+    "price": "$399.99",
+    "specs": {
+      "Suction Power": "4000 Pa (Twin-Turbine)",
+      "Battery Life": "180 minutes",
+      "Dustbin Capacity": "335 ml",
+      "Navigation": "iPath Laser + AI",
+      "Self-Empty Dock": "Yes, 2.5L",
+      "Carpet Boost": "Yes"
+    },
+    "tags": [
+      "robot vacuum",
+      "Eufy vacuum",
+      "pet hair vacuum",
+      "self-emptying vacuum",
+      "budget robot vacuum"
+    ],
+    "reviews": {
+      "positive": [
+        "The twin-turbine suction is incredible on carpets. I have two shedding cats and the X8 Pro fills its bin every single run. The laser mapping is as accurate as the $800 Roomba and the app is actually intuitive.",
+        "Battery life is insane — cleans my whole 1800 sq ft house on one charge. The self-empty station is much quieter than the Roomba's, and the bags are half the price. Eufy is killing it with value."
+      ],
+      "negative": [
+        "No mopping function at all. For $400 that's a glaring omission when competitors include it. Also the side brush wears down quickly on carpet — I'm replacing it every 6 weeks. Customer support takes 3-5 business days to reply."
+      ]
+    },
+    "category": "robot-vacuums",
+    "status": "active",
+    "added": "2025-10-05"
+  },
+  {
+    "name": "Mini Projector",
+    "model": "XGIMI MoGo 2 Pro Portable Projector",
+    "slug": "xgimi-mogo-2-pro-portable-projector-review",
+    "amazon_url": "https://www.amazon.com/dp/B0BWYK2KH2",
+    "price": "$399.00",
+    "specs": {
+      "Resolution": "Native 1080P",
+      "Brightness": "400 ISO Lumens",
+      "Connectivity": "WiFi 5, Bluetooth 5.0, HDMI, USB-C",
+      "Screen Size": "40-200 inches",
+      "Speaker": "2x 8W Harman Kardon",
+      "OS": "Android TV 11"
+    },
+    "tags": [
+      "mini projector",
+      "portable projector",
+      "Android TV projector",
+      "outdoor projector",
+      "4K projector"
+    ],
+    "reviews": {
+      "positive": [
+        "Built-in Android TV with Netflix certified is the killer feature. No dongles, no extra boxes — just power on and stream. The auto keystone and auto focus work in under 3 seconds. The Harman Kardon speakers are genuinely good enough to skip external audio.",
+        "The image quality at 400 ISO lumens punches way above its weight class. In a dark room, colors are vibrant and the 1080p native resolution is crisp. The compact size fits in my backpack — I've taken it to 3 Airbnbs already."
+      ],
+      "negative": [
+        "400 lumens is NOT bright enough for anything but pitch darkness. Don't even think about using this with ambient light. Also $400 is steep when the Wimius K9 does 90% of this for half the price."
+      ]
+    },
+    "category": "mini-projectors",
+    "status": "active",
+    "added": "2025-09-22"
+  },
+  {
+    "name": "Mini Projector",
+    "model": "BenQ GV31 Portable Projector",
+    "slug": "benq-gv31-portable-projector-review",
+    "amazon_url": "https://www.amazon.com/dp/B0CQRX8J5K",
+    "price": "$599.00",
+    "specs": {
+      "Resolution": "Native 1080P",
+      "Brightness": "300 ANSI Lumens",
+      "Connectivity": "WiFi 6, Bluetooth 5.2, HDMI, USB-C DP",
+      "Screen Size": "30-120 inches",
+      "Speaker": "2.1 Channel 12W",
+      "Battery": "2.5 hours",
+      "IP Rating": "IPX2 (splash proof)"
+    },
+    "tags": [
+      "mini projector",
+      "portable projector",
+      "battery projector",
+      "outdoor projector",
+      "BenQ projector"
+    ],
+    "reviews": {
+      "positive": [
+        "The 135-degree rotating lens is genius — you can project on the ceiling for bedtime Netflix without a tripod. The 2.1 channel speaker has actual bass, which is unheard of in a projector this size. Battery lasts a full movie.",
+        "BenQ color accuracy is legendary and it shows. Skin tones look natural, not oversaturated like cheaper projectors. The IPX2 rating saved it when a drink spilled nearby at a backyard party."
+      ],
+      "negative": [
+        "$599 is hard to swallow when the image quality isn't that much better than $200 competitors. The 300 lumens is actually dimmer than the Wimius. Also the Netflix app isn't pre-installed — you need a streaming stick, which defeats the all-in-one promise."
+      ]
+    },
+    "category": "mini-projectors",
+    "status": "active",
+    "added": "2025-12-10"
+  },
+  {
+    "name": "Security Camera",
+    "model": "EufyCam S330 4K Wireless Security Camera",
+    "slug": "eufycam-s330-4k-wireless-security-camera-review",
+    "amazon_url": "https://www.amazon.com/dp/B0BVQ7JL6Y",
+    "price": "$219.99",
+    "specs": {
+      "Resolution": "4K UHD",
+      "Field of View": "135°",
+      "Night Vision": "Color Night Vision + IR",
+      "Power": "Battery (365-day)",
+      "Storage": "16GB Local + No Monthly Fee",
+      "Smart Detection": "AI Human/Pet/Vehicle",
+      "Weather Rating": "IP67"
+    },
+    "tags": [
+      "security camera",
+      "wireless camera",
+      "4K security camera",
+      "battery camera",
+      "no subscription camera"
+    ],
+    "reviews": {
+      "positive": [
+        "The 365-day battery claim is real — I installed it 8 months ago and it's still at 30%. The 4K footage is crystal clear, I can read license plates from 40 feet away. No subscription fees is the real selling point — local storage on the HomeBase 3.",
+        "AI detection is eerily accurate. It tells me 'person spotted at front door' vs 'vehicle in driveway' and I can set different alert rules for each. The solar panel add-on means I'll literally never need to charge it."
+      ],
+      "negative": [
+        "The HomeBase 3 is required and it's huge — like a WiFi router-sized box you need to place centrally. Also the camera is noticeably larger than Arlo or Ring cameras, which makes it less discreet. The app occasionally takes 5+ seconds to load live view."
+      ]
+    },
+    "category": "security-cameras",
+    "status": "active",
+    "added": "2025-11-02"
+  },
+  {
+    "name": "Security Camera",
+    "model": "TP-Link Tapo C425 2K Wireless Security Camera",
+    "slug": "tp-link-tapo-c425-2k-wireless-security-camera-review",
+    "amazon_url": "https://www.amazon.com/dp/B0CJYYWMY5",
+    "price": "$69.99",
+    "specs": {
+      "Resolution": "2K QHD",
+      "Field of View": "150°",
+      "Night Vision": "Starlight Color + IR",
+      "Power": "Battery (300-day) + Solar Option",
+      "Storage": "MicroSD up to 512GB + Tapo Care Cloud",
+      "Smart Detection": "AI Person/Pet/Vehicle/Sound",
+      "Weather Rating": "IP66"
+    },
+    "tags": [
+      "security camera",
+      "wireless camera",
+      "budget security camera",
+      "solar camera",
+      "Tapo camera"
+    ],
+    "reviews": {
+      "positive": [
+        "Incredible value at $70. The 2K quality is sharp enough to identify faces and the Starlight night vision is genuinely color at night — not that fake IR color some brands claim. The magnetic mount makes installation stupidly easy on any metal surface.",
+        "The Tapo app is surprisingly polished. Motion zones, activity scheduling, and AI filtering all work without bugs. The solar panel accessory ($30) means I've literally never had to charge this camera in 6 months."
+      ],
+      "negative": [
+        "No HomeKit support is a dealbreaker for Apple users. Also the 2K resolution is noticeably softer than 4K cameras when you zoom in digitally. The built-in siren is weak — more of an angry mosquito than a deterrent."
+      ]
+    },
+    "category": "security-cameras",
+    "status": "active",
+    "added": "2025-12-18"
+  }
+]

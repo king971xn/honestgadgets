@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Logs
+auto_pilot.log
+health_report.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated content (tracked separately by CI)
+# reviews/ is intentionally NOT ignored — it's the core output
