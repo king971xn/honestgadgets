@@ -1164,6 +1164,25 @@ def main():
                            c_ok, c_fail, c_skip, c_failed_list,
                            balance, len(products))
 
+    # Phase 4: Auto-deploy to surge.sh
+    if not MODE_DRY_RUN:
+        logger.info(f"{'#' * 50}")
+        logger.info("Phase 4/4: Auto-deploy to surge.sh")
+        logger.info(f"{'#' * 50}")
+        try:
+            deploy_result = subprocess.run(
+                [sys.executable, "deploy_site.py"],
+                capture_output=True, text=True, timeout=180
+            )
+            if deploy_result.returncode == 0:
+                logger.info(f"[DEPLOY] Success: {SITE_URL}")
+            else:
+                logger.error(f"[DEPLOY] Failed: {deploy_result.stderr[:500]}")
+                send_phone_alert("Deploy failed", deploy_result.stderr[:500])
+        except Exception as e:
+            logger.error(f"[DEPLOY] Exception: {e}")
+            send_phone_alert("Deploy exception", str(e))
+
     # ---- 收尾 ----
     total_s = s_ok + s_fail + s_skip
     total_c = c_ok + c_fail + c_skip
