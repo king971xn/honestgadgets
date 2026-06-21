@@ -67,4 +67,4 @@ jobs:
           git add reviews/ compare/ index.html compare.html sitemap.xml rss.xml auto_pilot.log health_report.md indexnow-key.txt deploy/ self_heal.log
           git diff --staged --quiet && echo "[SKIP] No changes to commit" && exit 0
           git commit -m "Auto: daily content refresh [skip ci]"
-          git push origin main 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"
+          git push origin master 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"

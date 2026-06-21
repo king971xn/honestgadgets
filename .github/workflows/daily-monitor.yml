@@ -46,4 +46,4 @@ jobs:
           git add auto_monitor.log health_report.md
           git diff --staged --quiet && exit 0
           git commit -m "Auto: monitor report [skip ci]"
-          git push origin main 2>&1 || echo "[WARN] Push failed (GFW)"
+          git push origin master 2>&1 || echo "[WARN] Push failed (GFW)"

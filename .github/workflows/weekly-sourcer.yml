@@ -49,4 +49,4 @@ jobs:
           git add products.json reviews/ compare/ index.html sitemap.xml rss.xml sourcer.log
           git diff --staged --quiet && echo "[SKIP] No changes to commit" && exit 0
           git commit -m "Auto: weekly product discovery [skip ci]"
-          git push origin main 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"
+          git push origin master 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"
