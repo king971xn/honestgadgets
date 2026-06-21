@@ -1,4 +1,4 @@
-name: Daily Auto Monitor + Report
+﻿name: Daily Auto Monitor + Report
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
           ALERT_EMAIL_AUTH: ${{ secrets.ALERT_EMAIL_AUTH }}
           ALERT_EMAIL_SMTP: ${{ secrets.ALERT_EMAIL_SMTP }}
           ALERT_EMAIL_PORT: ${{ secrets.ALERT_EMAIL_PORT }}
-        run: python -u auto_monitor.py 2>&1
+        run: python auto_monitor.py
 
       - name: Debug (auto_monitor log)
         if: always()
