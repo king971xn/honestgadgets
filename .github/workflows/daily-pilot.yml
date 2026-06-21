@@ -1,6 +1,8 @@
 name: Daily Review + Auto Deploy (Cloud)
 
 on:
+  push:
+    branches: [master]
   schedule:
     - cron: '0 19 * * *'
   workflow_dispatch:
@@ -64,7 +66,7 @@ jobs:
         run: |
           git config user.name "AutoPilot Bot"
           git config user.email "bot@honestgadgets.com"
-          git add reviews/ compare/ index.html compare.html sitemap.xml rss.xml auto_pilot.log health_report.md indexnow-key.txt deploy/ self_heal.log
+          git add reviews/ compare/ index.html compare.html sitemap.xml rss.xml auto_pilot.log health_report.md indexnow-key.txt deploy/ self_heal.log 2>/dev/null || true
           git diff --staged --quiet && echo "[SKIP] No changes to commit" && exit 0
           git commit -m "Auto: daily content refresh [skip ci]"
           git push origin master 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"

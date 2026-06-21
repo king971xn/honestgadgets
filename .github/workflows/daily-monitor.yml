@@ -1,6 +1,8 @@
 name: Daily Auto Monitor + Report
 
 on:
+  push:
+    branches: [master]
   schedule:
     - cron: '0 23,11 * * *'
   workflow_dispatch:
@@ -43,7 +45,7 @@ jobs:
         run: |
           git config user.name "Monitor Bot"
           git config user.email "bot@honestgadgets.com"
-          git add auto_monitor.log health_report.md
+          git add auto_monitor.log health_report.md 2>/dev/null || true
           git diff --staged --quiet && exit 0
           git commit -m "Auto: monitor report [skip ci]"
           git push origin master 2>&1 || echo "[WARN] Push failed (GFW)"

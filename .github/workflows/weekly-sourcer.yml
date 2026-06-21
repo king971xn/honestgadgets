@@ -1,6 +1,8 @@
 name: Weekly Product Discovery (AutoSourcer)
 
 on:
+  push:
+    branches: [master]
   schedule:
     - cron: '0 20 * * 0'
   workflow_dispatch:
@@ -46,7 +48,7 @@ jobs:
         run: |
           git config user.name "AutoSourcer Bot"
           git config user.email "bot@honestgadgets.com"
-          git add products.json reviews/ compare/ index.html sitemap.xml rss.xml sourcer.log
+          git add products.json reviews/ compare/ index.html sitemap.xml rss.xml sourcer.log 2>/dev/null || true
           git diff --staged --quiet && echo "[SKIP] No changes to commit" && exit 0
           git commit -m "Auto: weekly product discovery [skip ci]"
           git push origin master 2>&1 || echo "[WARN] Push failed (expected under GFW) -- changes saved locally"
