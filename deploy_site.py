@@ -23,7 +23,9 @@ PUBLIC_DIRS = ["reviews", "compare"]
 
 
 def load_env():
+    """Load config from .env file, with os.environ as override."""
     env = {}
+    # Read .env file first (lower priority)
     if os.path.exists(ENV_FILE):
         with open(ENV_FILE, "r", encoding="utf-8") as f:
             for line in f:
@@ -31,6 +33,10 @@ def load_env():
                 if line and not line.startswith("#") and "=" in line:
                     key, val = line.split("=", 1)
                     env[key.strip()] = val.strip()
+    # Merge os.environ (higher priority -- CI secrets override .env)
+    for key in ["SURGE_TOKEN", "SURGE_EMAIL", "SITE_URL"]:
+        if os.environ.get(key):
+            env[key] = os.environ[key]
     return env
 
 

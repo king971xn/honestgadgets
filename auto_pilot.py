@@ -123,6 +123,7 @@ COMPARE_DIR.mkdir(exist_ok=True)
 MODE_REVIEWS_ONLY = "--reviews-only" in sys.argv
 MODE_COMPARE_ONLY = "--compare-only" in sys.argv
 MODE_DRY_RUN      = "--dry-run" in sys.argv
+MODE_NO_DEPLOY   = "--no-deploy" in sys.argv
 
 # ========================================================================
 # 日志
@@ -1129,7 +1130,7 @@ def main():
     logger.info("=" * 60)
     logger.info("AI 联盟营销评测网站 -- AutoPilot v3.0 启动")
     logger.info(f"模型: {DEEPSEEK_MODEL_ID}")
-    logger.info(f"模式: {'REVIEWS-ONLY' if MODE_REVIEWS_ONLY else 'COMPARE-ONLY' if MODE_COMPARE_ONLY else 'DRY-RUN' if MODE_DRY_RUN else 'FULL'}")
+    logger.info(f"模式: {'REVIEWS-ONLY' if MODE_REVIEWS_ONLY else 'COMPARE-ONLY' if MODE_COMPARE_ONLY else 'DRY-RUN' if MODE_DRY_RUN else 'FULL'}{' (NO-DEPLOY)' if MODE_NO_DEPLOY else ''}")
     logger.info("=" * 60)
 
     # ---- 校验 API Key ----
@@ -1290,7 +1291,7 @@ def main():
                            balance, len(products))
 
     # Phase 4: Auto-deploy to surge.sh
-    if not MODE_DRY_RUN:
+    if not MODE_DRY_RUN and not MODE_NO_DEPLOY:
         logger.info(f"{'#' * 50}")
         logger.info("Phase 4/4: Auto-deploy to surge.sh")
         logger.info(f"{'#' * 50}")
