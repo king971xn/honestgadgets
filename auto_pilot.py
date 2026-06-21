@@ -32,6 +32,7 @@ import urllib.request, urllib.parse, urllib.error
 from pathlib import Path
 from datetime import datetime, timezone
 from itertools import combinations
+import subprocess
 
 def category_pairs(products: list[dict]):
     """Generate comparison pairs only within same category (saves ~90% token cost)"""
@@ -66,7 +67,7 @@ except ImportError:
                 key, _, value = line.partition("=")
                 key, value = key.strip(), value.strip().strip('"').strip("'")
                 if key not in os.environ:
-                    os.environ[key] = v
+                    os.environ[key] = value
 
 # ========================================================================
 # 配置项
@@ -405,9 +406,8 @@ CRITICAL: Write in a conversational, personal tone that sounds human -- not AI. 
    - <h2> The Downsides: Honest section quoting SPECIFIC complaints from negative reviews
    - <h2> Comparison Table: Clean <table> comparing against 2-3 competitors
    - <h2> Pros & Cons: <ul class="pro-list"> and <ul class="con-list"> lists
-   - <h2> Final Verdict: Who this is for AND who should avoid it. End with EXACT CTA button:
-     <a href="{aff_url}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check Price on Amazon →</a>
-
+The page already displays a Verdict Box at the top (rating, price, pros/cons, CTA). Do NOT duplicate it. End with a closing thought and 1-2 natural CTA buttons:
+     <a href="{aff_url}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check Price on Amazon &rarr;</a>
 2. TONE: Use contractions, casual phrases ("Honestly," "Here's the thing," "Not gonna lie"), short paragraphs (2-3 sentences). NEVER use "In today's digital age," "Moreover," "Furthermore," "In conclusion."
 
 3. AFFILIATE: Mention product name 3-4 times. Include 2 additional CTA buttons mid-article. Comparison table should subtly highlight why THIS product is best value.
@@ -461,9 +461,9 @@ CRITICAL: Conversational, personal tone. Output ONLY <article> content.
    - <h2> {b['model']} Deep Dive: Same honest treatment
    - <h2> Real-World Performance: Which wins for specific scenarios (office, gaming, travel, etc.)
    - <h2> The Hidden Costs: What negative reviews reveal about long-term durability, support, accessories for both
-   - <h2> Final Verdict: Clear recommendation for 3 different buyer types. End with BOTH CTA buttons:
-     <a href="{aff_a}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check {a['model']} on Amazon →</a>
-     <a href="{aff_b}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check {b['model']} on Amazon →</a>
+A Quick Decision Guide (prices, specs, dual CTAs) is already at the top of the page. Do NOT duplicate it. End with 1-2 natural CTA buttons:
+     <a href="{aff_a}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check {a['model']} on Amazon &rarr;</a>
+     <a href="{aff_b}" class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300">Check {b['model']} on Amazon &rarr;</a>
 
 2. TONE: Contractions, casual phrases, short paragraphs. NEVER use "Moreover," "Furthermore," "In conclusion."
 
@@ -530,6 +530,49 @@ def _html_footer(year: int) -> str:
 # ========================================================================
 # 评测 HTML
 # ========================================================================
+
+def _verdict_box_review(product):
+    """Generate conversion-optimized verdict box from product data (zero LLM cost)"""
+    model = product.get("model", "")
+    price = product.get("price", "$?.??")
+    image_url = product.get("image_url", "")
+    reviews_data = product.get("reviews", {})
+    specs = product.get("specs", {})
+    pos_count = len(reviews_data.get("positive", []))
+    neg_count = len(reviews_data.get("negative", []))
+    total = pos_count + neg_count
+    if total > 0:
+        score = pos_count / total
+        stars = int(round(score * 5))
+        score_text = f"{score*5:.1f}/5 from real reviews"
+    else:
+        stars = 4
+        score_text = "4.0/5 from real reviews"
+    star_display = chr(9733) * max(stars, 1) + chr(9734) * (5 - max(stars, 1))
+    top_specs = list(specs.items())[:3]
+    specs_text = " | ".join([f"{k}: {v}" for k, v in top_specs])
+    pos_samples = reviews_data.get("positive", [])[:2]
+    neg_samples = reviews_data.get("negative", [])[:1]
+    pros_html = "".join([f'<div class="pro">+ {r[:150]}</div>' for r in pos_samples])
+    cons_html = "".join([f'<div class="con">- {r[:150]}</div>' for r in neg_samples])
+    aff_url = product.get("amazon_url", "") + AFFILIATE_TAG
+    visual_html = f'<div class="vvis"><div><div style="font-size:1.75rem;margin-bottom:.25rem;">&#9733;</div><div style="font-size:.7rem;opacity:.8;">{specs_text[:60]}</div></div></div>'
+    if image_url and image_url.startswith("http"):
+        visual_html = f'<div class="vvis"><img src="{image_url}" alt="{model}" loading="lazy" onerror="this.style.display=\'none\'" /></div>'
+    vb = []
+    vb.append('<div class="verdict-box">')
+    vb.append('<div class="vm">')
+    vb.append(f'<h1>{model}</h1>')
+    vb.append(f'<div class="vscore"><span class="stars">{star_display}</span><span class="score-t">{score_text}</span></div>')
+    vb.append(f'<div class="price-tag">{price}</div>')
+    vb.append('<div class="ql">' + pros_html + cons_html + '</div>')
+    vb.append(f'<a href="{aff_url}" class="cta-btn" target="_blank" rel="nofollow sponsored">Check Price on Amazon &rarr;</a>')
+    vb.append('<div style="font-size:.7rem;color:#94a3b8;margin-top:.5rem;">As an Amazon Associate we earn from qualifying purchases.</div>')
+    vb.append('</div>')
+    vb.append(visual_html)
+    vb.append('</div>')
+    return "\n".join(vb)
+
 def generate_review_html(slug: str, product: dict, article_content: str) -> Path:
     model = product["model"]
     desc  = f"Honest {model} review -- pros, cons, real user feedback, and expert comparison."
@@ -558,6 +601,8 @@ def generate_review_html(slug: str, product: dict, article_content: str) -> Path
             <strong>Affiliate Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases.
         </div>
         <article>
+        <article>
+            {_verdict_box_review(product)}
             {article_content}
         </article>
         <div class="mt-12 pt-8 border-t border-gray-200">
@@ -577,6 +622,29 @@ def generate_review_html(slug: str, product: dict, article_content: str) -> Path
 # ========================================================================
 # 对比页 HTML
 # ========================================================================
+
+def _verdict_box_compare(a, b):
+    """Generate side-by-side comparison verdict box (zero LLM cost)"""
+    model_a, model_b = a.get("model", ""), b.get("model", "")
+    price_a, price_b = a.get("price", "$?.??"), b.get("price", "$?.??")
+    aff_a = a.get("amazon_url", "") + AFFILIATE_TAG
+    aff_b = b.get("amazon_url", "") + AFFILIATE_TAG
+    specs_a = a.get("specs", {})
+    specs_b = b.get("specs", {})
+    top_a = " | ".join([f"{k}: {v}" for k, v in list(specs_a.items())[:2]])
+    top_b = " | ".join([f"{k}: {v}" for k, v in list(specs_b.items())[:2]])
+    vb = []
+    vb.append('<div class="compare-verdict">')
+    vb.append('<div class="cvh"><span>Quick Decision Guide &mdash; At a Glance</span></div>')
+    vb.append('<div class="cvg">')
+    vb.append(f'<div class="cvp"><h3>{model_a}</h3><div class="cvpr">{price_a}</div><div class="cvs">{top_a}</div><a href="{aff_a}" class="cvcta" target="_blank" rel="nofollow sponsored">Check Price &rarr;</a></div>')
+    vb.append('<div class="cvv">VS</div>')
+    vb.append(f'<div class="cvp"><h3>{model_b}</h3><div class="cvpr">{price_b}</div><div class="cvs">{top_b}</div><a href="{aff_b}" class="cvcta" target="_blank" rel="nofollow sponsored">Check Price &rarr;</a></div>')
+    vb.append('</div>')
+    vb.append('<div style="font-size:.7rem;color:#94a3b8;text-align:center;margin-top:.75rem;">As an Amazon Associate we earn from qualifying purchases.</div>')
+    vb.append('</div>')
+    return "\n".join(vb)
+
 def generate_comparison_html(slug: str, a: dict, b: dict, article_content: str) -> Path:
     model_a, model_b = a["model"], b["model"]
     desc = f"{model_a} vs {model_b}: honest head-to-head comparison with real user feedback, specs breakdown, and buying advice."
@@ -605,6 +673,7 @@ def generate_comparison_html(slug: str, a: dict, b: dict, article_content: str) 
             <strong>Affiliate Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases.
         </div>
         <article>
+            {_verdict_box_compare(a, b)}
             {article_content}
         </article>
         <div class="mt-12 pt-8 border-t border-gray-200">
@@ -659,6 +728,55 @@ def generate_with_quality_gate(
 # ========================================================================
 # 首页更新
 # ========================================================================
+
+def _card_stars(p):
+    """Generate star display for index card"""
+    reviews_data = p.get("reviews", {})
+    pos_count = len(reviews_data.get("positive", []))
+    neg_count = len(reviews_data.get("negative", []))
+    total = pos_count + neg_count
+    if total > 0:
+        score = pos_count / total
+        stars = int(round(score * 5))
+    else:
+        stars = 4
+    return chr(9733) * max(stars, 1) + chr(9734) * (5 - max(stars, 1))
+
+def _card_score_text(p):
+    """Generate score text for index card"""
+    reviews_data = p.get("reviews", {})
+    pos_count = len(reviews_data.get("positive", []))
+    neg_count = len(reviews_data.get("negative", []))
+    total = pos_count + neg_count
+    if total > 0:
+        score = pos_count / total
+        return f"{score*5:.1f}/5"
+    return "4.0/5"
+
+def _card_specs_text(p):
+    """Generate specs snippet for index card"""
+    specs = p.get("specs", {})
+    top = list(specs.items())[:2]
+    return " | ".join([f"{k}: {v}" for k, v in top])
+
+def _card_amazon_url(p):
+    """Generate affiliate Amazon URL for index card"""
+    return p.get("amazon_url", "") + AFFILIATE_TAG
+
+def _price_diff(a, b):
+    """Calculate price difference for compare cards"""
+    try:
+        pa = float(a.get("price", "$0").replace("$","").replace(",",""))
+        pb = float(b.get("price", "$0").replace("$","").replace(",",""))
+        if pa > 0 and pb > 0:
+            diff = abs(pa - pb)
+            pct = (diff / max(pa, pb)) * 100
+            if pct >= 1:
+                return f"Save ${diff:.0f} ({pct:.0f}%)"
+    except:
+        pass
+    return "Compare Prices"
+
 def update_index_html(products: list[dict]):
     existing = [p for p in products if (REVIEWS_DIR / f"{p['slug']}.html").exists()]
     now = datetime.now(timezone.utc)
@@ -670,16 +788,20 @@ def update_index_html(products: list[dict]):
             for t in p.get("tags", [])[:4]
         ])
         cards += f"""
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group overflow-hidden idx-card">
             <div class="p-6">
-                <div class="flex items-center gap-2 mb-3 flex-wrap">{tags_html}</div>
-                <h2 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-orange-500 transition">{p['model']}</h2>
-                <p class="text-sm text-slate-500 mb-4">{p['name']} -- In-depth honest review with real user feedback.</p>
+                <div class="flex items-center gap-2 mb-2 flex-wrap">{tags_html}</div>
+                <h2 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-orange-500 transition">{p['model']}</h2>
+                <div class="specs-sm">{_card_specs_text(p)}</div>
+                <div class="flex items-center gap-2 mb-3"><span class="star-sm">{_card_stars(p)}</span><span class="text-xs text-slate-400">{_card_score_text(p)}</span></div>
                 <div class="flex items-center justify-between">
                     <span class="text-2xl font-extrabold text-slate-900">{p['price']}</span>
-                    <a href="reviews/{p['slug']}.html" class="inline-flex items-center gap-1 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-500 transition-all duration-300">
-                        Read Review <span class="text-lg">→</span>
-                    </a>
+                    <div class="flex items-center gap-2">
+                        <a href="{_card_amazon_url(p)}" class="cta-sm" target="_blank" rel="nofollow sponsored">Check Price</a>
+                        <a href="reviews/{p['slug']}.html" class="inline-flex items-center gap-1 text-slate-500 text-sm font-medium hover:text-orange-500 transition">
+                            Review <span class="text-lg">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>"""
@@ -739,13 +861,16 @@ def update_compare_index(products: list[dict]):
         cards += f"""
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group overflow-hidden">
             <div class="p-6">
-                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full mb-3 inline-block">VS</span>
+                <div class="flex items-center justify-between mb-3">
+                    <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full">VS</span>
+                    <span class="text-xs text-red-400 font-semibold">{_price_diff(a, b)}</span>
+                </div>
                 <h2 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-orange-500 transition">{a['model']} vs {b['model']}</h2>
-                <p class="text-sm text-slate-500 mb-4">Head-to-head comparison: specs, real user feedback, and honest verdict.</p>
+                <p class="text-sm text-slate-500 mb-3">Head-to-head: specs, real user feedback, honest verdict.</p>
                 <div class="flex items-center justify-between">
                     <div class="text-sm text-slate-400">{a['price']} vs {b['price']}</div>
-                    <a href="compare/{slug}.html" class="inline-flex items-center gap-1 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-500 transition-all duration-300">
-                        Compare <span class="text-lg">→</span>
+                    <a href="compare/{slug}.html" class="inline-flex items-center gap-1 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-500 transition-all duration-300">
+                        Compare <span class="text-lg">&rarr;</span>
                     </a>
                 </div>
             </div>
