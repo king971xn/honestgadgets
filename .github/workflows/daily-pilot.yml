@@ -48,12 +48,22 @@ jobs:
         run: python auto_pilot.py
 
       - name: Run Self-Heal
+        continue-on-error: true
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
           DEEPSEEK_MODEL_ID: ${{ secrets.DEEPSEEK_MODEL_ID }}
           AFFILIATE_TAG: ${{ secrets.AFFILIATE_TAG }}
-        run: python self_heal.py
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: python -u self_heal.py 2>&1
+
+      - name: Debug (self_heal log)
+        if: always()
+        run: |
+          echo "=== self_heal.log ==="
+          cat self_heal.log 2>/dev/null || echo "(not found)"
+          echo "=== auto_pilot.log (tail 30) ==="
+          tail -30 auto_pilot.log 2>/dev/null || echo "(not found)"
 
       - name: Run Health Check
         env:

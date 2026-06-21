@@ -28,6 +28,7 @@ jobs:
         run: python _smoke_test.py
 
       - name: Run Auto Monitor
+        continue-on-error: true
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
@@ -39,7 +40,15 @@ jobs:
           ALERT_EMAIL_AUTH: ${{ secrets.ALERT_EMAIL_AUTH }}
           ALERT_EMAIL_SMTP: ${{ secrets.ALERT_EMAIL_SMTP }}
           ALERT_EMAIL_PORT: ${{ secrets.ALERT_EMAIL_PORT }}
-        run: python auto_monitor.py
+        run: python -u auto_monitor.py 2>&1
+
+      - name: Debug (auto_monitor log)
+        if: always()
+        run: |
+          echo "=== auto_monitor.log ==="
+          cat auto_monitor.log 2>/dev/null || echo "(not found)"
+          echo "=== auto_pilot.log (tail 20) ==="
+          tail -20 auto_pilot.log 2>/dev/null || echo "(not found)"
 
       - name: Commit monitor log
         run: |
