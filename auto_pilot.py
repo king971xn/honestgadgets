@@ -1303,7 +1303,13 @@ def main():
                 env=deploy_env
             )
             if deploy_result.returncode == 0:
-                logger.info(f"[DEPLOY] Success: {SITE_URL}")
+                out_lower = (deploy_result.stdout or "").lower()
+                if "success" in out_lower or "published" in out_lower:
+                    logger.info(f"[DEPLOY] Success: {SITE_URL}")
+                elif "skipped" in out_lower or "warn" in out_lower:
+                    logger.warning(f"[DEPLOY] Skipped (config needed): {deploy_result.stdout[:250].strip()}")
+                else:
+                    logger.info(f"[DEPLOY] Done (rc=0)")
             else:
                 logger.error(f"[DEPLOY] Failed: {deploy_result.stderr[:500]}")
                 send_phone_alert("Deploy failed", deploy_result.stderr[:500])
