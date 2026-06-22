@@ -24,6 +24,12 @@ jobs:
       - name: Install Python deps
         run: pip install python-dotenv
 
+      - name: Pre-flight check
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: python pre_flight.py
+
       - name: Smoke test
         run: python _smoke_test.py
 

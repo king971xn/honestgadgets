@@ -64,7 +64,8 @@ def sync_to_deploy():
 
 
 def deploy():
-    if not load_env().get("SURGE_TOKEN"):
+    env_cfg = load_env()
+    if not env_cfg.get("SURGE_TOKEN"):
         print("[ERROR] SURGE_TOKEN not found. Run python surge_setup.py first.")
         sys.exit(1)
 
@@ -77,11 +78,19 @@ def deploy():
     shutil.copytree(DEPLOY_DIR, tmp)
     print(f"[DEPLOY] Uploading {tmp} -> {DOMAIN} ...")
 
-    # Run surge directly, avoid Python subprocess encoding issues
+    # Build environment for surge CLI (needs SURGE_LOGIN + SURGE_TOKEN)
+    surge_env = os.environ.copy()
+    if env_cfg.get("SURGE_EMAIL"):
+        surge_env["SURGE_LOGIN"] = env_cfg["SURGE_EMAIL"]
+    if env_cfg.get("SURGE_TOKEN"):
+        surge_env["SURGE_TOKEN"] = env_cfg["SURGE_TOKEN"]
+
+    # Run surge with explicit env (CI-safe)
     result = subprocess.run(
         [SURGE, tmp, DOMAIN],
         capture_output=True,
-        timeout=300
+        timeout=300,
+        env=surge_env
     )
 
     # Combine stdout+stderr for checking

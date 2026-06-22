@@ -1296,9 +1296,11 @@ def main():
         logger.info("Phase 4/4: Auto-deploy to surge.sh")
         logger.info(f"{'#' * 50}")
         try:
+            deploy_env = os.environ.copy()
             deploy_result = subprocess.run(
                 [sys.executable, "deploy_site.py"],
-                capture_output=True, text=True, timeout=180
+                capture_output=True, text=True, timeout=180,
+                env=deploy_env
             )
             if deploy_result.returncode == 0:
                 logger.info(f"[DEPLOY] Success: {SITE_URL}")

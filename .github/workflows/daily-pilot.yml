@@ -16,14 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (for surge)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install surge
-        run: npm install -g surge
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -32,10 +24,41 @@ jobs:
       - name: Install Python deps
         run: pip install python-dotenv
 
-      - name: Smoke test
+      - name: Pre-flight check (config validation)
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
+          DEEPSEEK_MODEL_ID: ${{ secrets.DEEPSEEK_MODEL_ID }}
+          AFFILIATE_TAG: ${{ secrets.AFFILIATE_TAG }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          SURGE_EMAIL: ${{ secrets.SURGE_EMAIL }}
+        run: python pre_flight.py
+
+      - name: Smoke test (syntax + imports)
         run: python _smoke_test.py
 
-      - name: Run AutoPilot
+      - name: Setup Node.js (for surge deploy)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install surge (non-fatal)
+        run: npm install -g surge 2>&1 || echo "[WARN] surge install failed -- will skip deploy"
+        continue-on-error: true
+
+      - name: Verify surge available
+        id: surge_check
+        run: |
+          if command -v surge >/dev/null 2>&1; then
+            echo "available=true" >> $GITHUB_OUTPUT
+            echo "[OK] surge CLI found"
+          else
+            echo "available=false" >> $GITHUB_OUTPUT
+            echo "[WARN] surge CLI not found -- deploy will be skipped"
+          fi
+
+      - name: Run AutoPilot (content generation)
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
@@ -45,6 +68,7 @@ jobs:
           SERVER_CHAN_KEY: ${{ secrets.SERVER_CHAN_KEY }}
           SITE_URL: ${{ secrets.SITE_URL }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          SURGE_EMAIL: ${{ secrets.SURGE_EMAIL }}
         run: python auto_pilot.py
 
       - name: Run Self-Heal

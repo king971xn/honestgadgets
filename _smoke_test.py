@@ -15,6 +15,7 @@ REQUIRED_IMPORTS = {
     'deploy_site.py': ['subprocess'],
     'auto_monitor.py': ['subprocess'],
     'auto_sourcer.py': [],
+    'pre_flight.py': [],
 }
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
