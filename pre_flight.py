@@ -10,6 +10,7 @@ import ast
 import sys
 import os
 import json
+import shutil
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -68,7 +69,7 @@ for k, v in env_vars.items():
         print(f"  [OK] {k} = {masked}")
     else:
         if k == "DEEPSEEK_API_KEY":
-            errors.append(f"{k} is NOT SET -- content generation will be skipped")
+            warnings.append(f"{k} is NOT SET -- content generation will be skipped")
             print(f"  [WARN] {k}: NOT SET (content gen will skip)")
         elif k == "AFFILIATE_TAG":
             warnings.append(f"{k} is NOT SET -- affiliate links won't work")
@@ -96,7 +97,6 @@ surge_token = os.getenv("SURGE_TOKEN", "")
 surge_email = os.getenv("SURGE_EMAIL", "")
 
 # Check if surge is available
-import shutil
 if shutil.which("surge") or shutil.which("surge.cmd"):
     print(f"  [OK] surge CLI found")
     if surge_token:
