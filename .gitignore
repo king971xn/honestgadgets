@@ -1,11 +1,14 @@
-# Python
+﻿# Python
 __pycache__/
 *.pyc
 *.pyo
 .env
 
+# Secrets (encrypted or not)
+.env.enc
+
 # Logs
-auto_pilot.log
+*.log
 health_report.md
 
 # IDE
@@ -19,4 +22,4 @@ health_report.md
 Thumbs.db
 
 # Generated content (tracked separately by CI)
-# reviews/ is intentionally NOT ignored — it's the core output
+# reviews/ is intentionally NOT ignored -- it is the core output
