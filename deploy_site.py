@@ -1,7 +1,7 @@
 """
 deploy_site.py 鈥?Fully automated static site deployment to surge.sh
 1. Syncs root HTML/CSS/XML/TXT to deploy/
-2. Copies deploy/ to temp English-only path
+2. Copies deploy/ + reviews/compare/images from root to temp path
 3. Deploys via surge CLI to honestgadgets.surge.sh
 """
 import subprocess
@@ -19,7 +19,7 @@ _SURGE_WIN = "C:/Users/Administrator/AppData/Roaming/npm/surge.cmd"
 SURGE = _SURGE_WIN if os.path.exists(_SURGE_WIN) else "surge"
 
 PUBLIC_GLOBS = ["*.html", "*.xml", "*.txt"]
-PUBLIC_DIRS = ["reviews", "compare"]
+PUBLIC_DIRS = ["reviews", "compare", "images"]
 
 
 def load_env():
@@ -41,8 +41,8 @@ def load_env():
 
 
 def sync_to_deploy():
-    """Copy all public files from root to deploy/"""
-    print("[SYNC] Copying public files to deploy/...")
+    """Copy root HTML/XML/TXT to deploy/ (subdirs used directly from root)"""
+    print("[SYNC] Copying root public files to deploy/...")
     os.makedirs(DEPLOY_DIR, exist_ok=True)
 
     import glob
@@ -50,14 +50,6 @@ def sync_to_deploy():
         for filepath in glob.glob(os.path.join(ROOT_DIR, pattern)):
             filename = os.path.basename(filepath)
             shutil.copy2(filepath, os.path.join(DEPLOY_DIR, filename))
-
-    for dirname in PUBLIC_DIRS:
-        src_dir = os.path.join(ROOT_DIR, dirname)
-        dst_dir = os.path.join(DEPLOY_DIR, dirname)
-        if os.path.exists(src_dir):
-            if os.path.exists(dst_dir):
-                shutil.rmtree(dst_dir)
-            shutil.copytree(src_dir, dst_dir)
 
     total = sum(1 for _ in os.scandir(DEPLOY_DIR))
     print(f"[SYNC] Done. {total} items in deploy/")
@@ -71,11 +63,15 @@ def deploy():
 
     sync_to_deploy()
 
-    # Copy to temp dir without Chinese chars (avoids encoding issues)
+    # Build temp dir for surge: deploy/ staging + content dirs from root
     tmp = os.path.join(tempfile.gettempdir(), "surge_deploy")
     if os.path.exists(tmp):
         shutil.rmtree(tmp)
     shutil.copytree(DEPLOY_DIR, tmp)
+    for dirname in PUBLIC_DIRS:
+        src = os.path.join(ROOT_DIR, dirname)
+        if os.path.exists(src):
+            shutil.copytree(src, os.path.join(tmp, dirname))
     print(f"[DEPLOY] Uploading {tmp} -> {DOMAIN} ...")
 
     # Build environment for surge CLI (needs SURGE_LOGIN + SURGE_TOKEN)
