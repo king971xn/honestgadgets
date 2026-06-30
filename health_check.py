@@ -49,7 +49,7 @@ def send_email_alert(title: str, content: str) -> bool:
         return False
     try:
         smtp = os.getenv("ALERT_EMAIL_SMTP", "smtp.qq.com")
-        port = int(os.getenv("ALERT_EMAIL_PORT", "465"))
+        port = int(os.getenv("ALERT_EMAIL_PORT") or "465")
         msg = MIMEText(content, "plain", "utf-8")
         msg["Subject"] = title
         msg["From"] = ALERT_EMAIL

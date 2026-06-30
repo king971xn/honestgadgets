@@ -28,6 +28,7 @@
 ================================================================================
 """
 import os, sys, json, time, logging, uuid, hashlib
+import re
 import urllib.request, urllib.parse, urllib.error
 from pathlib import Path
 from datetime import datetime, timezone
@@ -81,7 +82,7 @@ SERVER_CHAN_KEY   = os.getenv("SERVER_CHAN_KEY", "")
 ALERT_EMAIL       = os.getenv("ALERT_EMAIL", "")
 ALERT_EMAIL_AUTH  = os.getenv("ALERT_EMAIL_AUTH", "")
 ALERT_EMAIL_SMTP  = os.getenv("ALERT_EMAIL_SMTP", "smtp.qq.com")
-ALERT_EMAIL_PORT  = int(os.getenv("ALERT_EMAIL_PORT", "465"))
+ALERT_EMAIL_PORT  = int(os.getenv("ALERT_EMAIL_PORT") or "465")
 if ALERT_EMAIL and '@' not in ALERT_EMAIL:
     ALERT_EMAIL = f'{ALERT_EMAIL}@qq.com'
 
@@ -558,8 +559,8 @@ def _verdict_box_review(product):
     cons_html = "".join([f'<div class="con">- {r[:150]}</div>' for r in neg_samples])
     aff_url = product.get("amazon_url", "") + AFFILIATE_TAG
     visual_html = f'<div class="vvis"><div><div style="font-size:1.75rem;margin-bottom:.25rem;">&#9733;</div><div style="font-size:.7rem;opacity:.8;">{specs_text[:60]}</div></div></div>'
-    if image_url and image_url.startswith("http"):
-        visual_html = f'<div class="vvis"><img src="{image_url}" alt="{model}" loading="lazy" onerror="this.style.display=\'none\'" /></div>'
+    if image_url:
+        visual_html = f'<div class="vvis"><img src="../{image_url}" alt="{model}" loading="lazy" onerror="this.style.display=\'none\'" /></div>'
     vb = []
     vb.append('<div class="verdict-box">')
     vb.append('<div class="vm">')
@@ -577,6 +578,8 @@ def _verdict_box_review(product):
 def generate_review_html(slug: str, product: dict, article_content: str) -> Path:
     model = product["model"]
     desc  = f"Honest {model} review -- pros, cons, real user feedback, and expert comparison."
+    # Sanitize any hallucinated affiliate tags from DeepSeek output
+    article_content = _sanitize_amazon_urls(article_content)
     now   = datetime.now(timezone.utc)
     date_str = now.strftime('%Y-%m-%d')
     keywords = ", ".join(product.get('tags', []))
@@ -649,6 +652,8 @@ def _verdict_box_compare(a, b):
 def generate_comparison_html(slug: str, a: dict, b: dict, article_content: str) -> Path:
     model_a, model_b = a["model"], b["model"]
     desc = f"{model_a} vs {model_b}: honest head-to-head comparison with real user feedback, specs breakdown, and buying advice."
+    # Sanitize any hallucinated affiliate tags from DeepSeek output
+    article_content = _sanitize_amazon_urls(article_content)
     now  = datetime.now(timezone.utc)
     date_str = now.strftime('%Y-%m-%d')
     keywords = f"{model_a} vs {model_b}, {model_a} comparison, {model_b} comparison, best {a['name'].lower()}"
@@ -763,6 +768,12 @@ def _card_specs_text(p):
 def _card_amazon_url(p):
     """Generate affiliate Amazon URL for index card"""
     return p.get("amazon_url", "") + AFFILIATE_TAG
+
+def _sanitize_amazon_urls(html: str) -> str:
+    """Strip any hallucinated ?tag=... params from Amazon URLs that DeepSeek may have inserted."""
+    # Remove patterns like ?tag=your-tag-20&test-20& or ?tag=your-affiliate-tag-20&test-20&
+    html = re.sub(r'\?tag=your[-a-z]+-20(&[a-z]+-20)*', '', html)
+    return html
 
 def _price_diff(a, b):
     """Calculate price difference for compare cards"""

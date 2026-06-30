@@ -51,7 +51,7 @@ SITE_URL          = os.getenv("SITE_URL", "https://honestgadgets.surge.sh")
 ALERT_EMAIL       = os.getenv("ALERT_EMAIL", "")
 ALERT_EMAIL_AUTH  = os.getenv("ALERT_EMAIL_AUTH", "")
 ALERT_EMAIL_SMTP  = os.getenv("ALERT_EMAIL_SMTP", "smtp.qq.com")
-ALERT_EMAIL_PORT  = int(os.getenv("ALERT_EMAIL_PORT", "465"))
+ALERT_EMAIL_PORT  = int(os.getenv("ALERT_EMAIL_PORT") or "465")
 
 if ALERT_EMAIL and "@" not in ALERT_EMAIL:
     ALERT_EMAIL = f"{ALERT_EMAIL}@qq.com"
@@ -543,7 +543,10 @@ def main():
         logger.info(body)
 
     # Print report to console
-    print("\n" + body)
+    try:
+        print("\n" + body)
+    except UnicodeEncodeError:
+        print("\n" + body.encode("ascii", errors="replace").decode("ascii"))
 
     # Write health report
     HEALTH_FILE.write_text(body, encoding="utf-8")
